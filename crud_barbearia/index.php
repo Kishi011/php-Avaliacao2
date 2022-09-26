@@ -30,8 +30,8 @@
                         echo "<td>$row->Codigo</td>"; echo "<td>$row->Nome</td>";
                         echo "<td>$row->Descricao</td>"; echo "<td>R$ $row->Preco</td>";
                         echo "<td>
-                        <a href='edit.php' class='btn btn-outline-success'>Editar</a> 
-                        <a href='del.php' class='btn btn-outline-danger'>Excluir</a>
+                        <a href='add.php?codigo= $row->Codigo' class='btn btn-outline-success'>Editar</a> 
+                        <a href='del.php?codigo= $row->Codigo' class='btn btn-outline-danger'>Excluir</a>
                         </td>";
                     echo "</tr>";
                 }

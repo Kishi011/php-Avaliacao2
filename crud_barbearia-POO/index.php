@@ -1,6 +1,5 @@
 <?php
     require_once 'Conexao.class.php';
-    require_once 'Produto.class.php';
 
     $con = new Conexao();
     $conn = $con->get_conetion();
@@ -14,40 +13,21 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-        <h1>Barbearia</h1>
-
-        <div class="container-md">
-            <table class='table table-striped'>
-                <thead>
-                    <th>Código</th> <th>Nome</th>
-                    <th>Descrição</th> <th>Preço</th>
-                    <th>Ações</th>
-                </thead>
-                <tbody>
-        <?php
-        $stmt = $conn->prepare("SELECT * FROM Produtos");
-        $stmt->execute();
-
-        if($stmt->rowCount() > 0){
-            while($row = $stmt->fetch(PDO::FETCH_OBJ)){
-                    echo "<tr>";
-                        echo "<td>$row->Codigo</td>"; echo "<td>$row->Nome</td>";
-                        echo "<td>$row->Descricao</td>"; echo "<td>R$ $row->Preco</td>";
-                        echo "<td>
-                        <a href='add.php?codigo= $row->Codigo' class='btn btn-outline-success'>Editar</a> 
-                        <a href='del.php?codigo= $row->Codigo' class='btn btn-outline-danger'>Excluir</a>
-                        </td>";
-                    echo "</tr>";
-                }
-        } else {
-            echo "Nenhum resultado encontrado";
-        }
-        ?>
-                </tbody>
-            </table>
-            <button class='btn btn-outline-primary' onclick='location.href="add.php"'>
-                Adicionar
-            </button>
+        <div class="container-sm p-5 m-5">
+            <h1>Acesso Restrito - Barbearia</h1>
+            <form action="login.php?idUsuario=1" method="POST">
+                <div class="mb-3 mt-3">
+                    <label class="form-label">Email</label>
+                    <input class="form-control" type="email" name="email">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Senha</label>
+                    <input class="form-control" type="password" name="senha">
+                </div>
+                <div>
+                    <input class="btn btn-outline-primary mt-3" type="submit" value="Entrar">
+                </div>
+            </form>
         </div>
     </body>
 </html>

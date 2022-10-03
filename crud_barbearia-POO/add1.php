@@ -10,7 +10,7 @@ if(!isset($_REQUEST['codigo']) || $_REQUEST['codigo'] == ''){
 
 	$stmt = $conn->prepare("INSERT INTO Produtos(Nome, Descricao, Preco) VALUES ('$nome', '$desc', $preco)");
 	$stmt->execute();
-	header('Location:index.php');
+	header('Location:acesso.php');
 } else {
 	$codigo = $_REQUEST['codigo'];
 	$nome = $_REQUEST['nome'];
@@ -19,6 +19,6 @@ if(!isset($_REQUEST['codigo']) || $_REQUEST['codigo'] == ''){
 
 	$stmt = $conn->prepare("UPDATE Produtos SET Nome='$nome', Descricao='$desc', Preco=$preco WHERE Codigo=$codigo");
 	$stmt->execute();
-	header('Location:index.php');
+	header('Location:acesso.php');
 }
 ?>

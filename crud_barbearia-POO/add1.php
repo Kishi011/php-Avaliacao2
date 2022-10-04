@@ -1,7 +1,7 @@
 <?php
 require_once 'Conexao.class.php';
-$con = new Conexao();
-$conn = $con->get_conetion();
+
+$conn = (new Conexao())->get_conetion();
 
 if(!isset($_REQUEST['codigo']) || $_REQUEST['codigo'] == ''){
 	$nome = $_REQUEST['nome'];

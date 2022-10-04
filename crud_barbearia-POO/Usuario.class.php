@@ -3,8 +3,8 @@ require_once 'Conexao.class.php';
 
 class Usuario {
 
-    private String $email;
-    private String $senha;
+    private $email;
+    private $senha;
 
     function __construct($email, $senha)
     {
@@ -17,21 +17,24 @@ class Usuario {
 
     public function validaAcesso(){
         $conn = (new Conexao())->get_conetion();
-        $stmt = $conn->prepare('SELECT * FROM Usuarios WHERE email=? AND senha=?');
-        $stmt->bindParam(1, $this->get_email());
-        $stmt->bindParam(2, $this->get_senha());
-        if($stmt->execute()){
-            if($stmt->rowCount()>0){
+
+        $resultado = $conn->prepare("SELECT * FROM usuarios As func WHERE Email=?  AND Senha=?");
+        $resultado->bindParam(1, $this->email);
+        $resultado->bindParam(2, $this->senha);
+
+        if($resultado->execute()){
+            if($resultado->rowCount()>0){
                 // session_start inicia a sessão
-                session_start();     
+                session_start();
                 //$linha = $resultado->fetch(PDO::FETCH_OBJ);
-                $_SESSION['email'] = $this->get_email();
-                $_SESSION['senha'] = $this->get_senha();
-                header('location:acesso.php');
+                $_SESSION['idUsuario'] = 1;
+                $_SESSION['email'] = $this->email;
+                $_SESSION['senha'] = $this->senha;
+                header('location: acesso.php');
             } else {
                 session_unset();
                 session_destroy();
-                header('location:index.php');
+                header('location: index.php');
             }
         }
     }

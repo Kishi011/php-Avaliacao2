@@ -1,0 +1,38 @@
+body {
+    background: #FFFFFF;
+}
+
+.validacao {
+    display: block;
+    width: 940px;
+    margin: 100px auto;
+    padding: 50px;
+
+    background-color: #FFFFFF;
+    box-shadow: 2px 5px 10px 5px #777777;
+
+    border-radius: 10px;
+}
+
+.validacao img {
+    display: block;
+    width: 15%;
+    margin: 30px auto;
+    border-radius: 10px;
+}
+
+.validacao form {
+    width: 50%;
+    margin: 0 auto;
+    padding: 15px;
+    font-weight: bold;
+}
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+}
+
+.btn-valida {
+    font-weight: bold;
+}
